@@ -1,0 +1,191 @@
+CREATE TABLE
+
+=> Hbase::Table - student
+hbase(main):001:0> create 'regno','name','dept'
+0 row(s) in 1.2420 seconds
+
+=> Hbase::Table - staff
+hbase(main):002:0> create 'id','name','dept','position','salary'
+0 row(s) in 1.2770 seconds
+
+=> Hbase::Table - mark
+hbase(main):003:0> create 'id','name','m1','m2','cgpa'
+0 row(s) in 1.2770 seconds
+
+INSERTING DATA:
+
+hbase(main):004:0> put 'student','123','name','abi'
+0 row(s) in 0.1370 seconds
+
+hbase(main):005:0> put 'student','456','name','ragavi'
+0 row(s) in 0.0070 seconds
+
+hbase(main):006:0> put 'student','789','name','ravi'
+0 row(s) in 0.0070 seconds
+
+hbase(main):007:0> put 'student','123','dept','IT'
+0 row(s) in 0.0090 seconds
+
+hbase(main):008:0> put 'student','456','dept','CSE'
+0 row(s) in 0.0150 seconds
+
+hbase(main):009:0> put 'student','789','dept','IT'
+0 row(s) in 0.0090 seconds
+
+hbase(main):010:0> put 'staff','100','name','anu'
+0 row(s) in 0.0200 seconds
+
+hbase(main):011:0> put 'staff','200','name','ram'
+0 row(s) in 0.0110 seconds
+
+hbase(main):012:0> put 'staff','300','name','suba'
+0 row(s) in 0.0100 seconds
+
+hbase(main):013:0> put 'staff','100','dept','IT'
+0 row(s) in 0.0110 seconds
+
+hbase(main):014:0> put 'staff','200','dept','CSE'
+0 row(s) in 0.0200 seconds
+
+hbase(main):015:0> put 'staff','300','dept','IT'
+0 row(s) in 0.0250 seconds
+
+hbase(main):016:0> put 'staff','100','position','Professor'
+0 row(s) in 0.0090 seconds
+
+hbase(main):017:0> put 'staff','200','position','Associate Professor'
+0 row(s) in 0.0110 seconds
+
+hbase(main):018:0> put 'staff','300','position','HOD'
+0 row(s) in 0.0110 seconds
+
+hbase(main):019:0> put 'staff','100','salary','50000'
+0 row(s) in 0.0210 seconds
+
+hbase(main):020:0> put 'staff','200','salary','60000'
+0 row(s) in 0.0120 seconds
+
+hbase(main):021:0> put 'staff','300','salary','70000'
+0 row(s) in 0.0100 seconds
+
+hbase(main):022:0> put 'mark','123','name','abi'
+0 row(s) in 0.0190 seconds
+
+hbase(main):023:0> put 'mark','456','name','ragavi'
+0 row(s) in 0.0100 seconds
+
+hbase(main):024:0> put 'mark','789','name','ravi'
+0 row(s) in 0.0100 seconds
+
+hbase(main):025:0> put 'mark','123','m1','89'
+0 row(s) in 0.0160 seconds
+
+hbase(main):026:0> put 'mark','456','m1','56'
+0 row(s) in 0.0090 seconds
+
+hbase(main):027:0> put 'mark','789','m1','98'
+0 row(s) in 0.0060 seconds
+
+hbase(main):028:0> put 'mark','123','m2','92'
+0 row(s) in 0.0120 seconds
+
+hbase(main):029:0> put 'mark','456','m2','65'
+0 row(s) in 0.0150 seconds
+
+hbase(main):030:0> put 'mark','789','m2','99'
+0 row(s) in 0.0090 seconds
+
+hbase(main):031:0> put 'mark','123','cgpa','8.9'
+0 row(s) in 0.0090 seconds
+
+hbase(main):032:0> put 'mark','456','cgpa','7.5'
+0 row(s) in 0.0090 seconds
+
+hbase(main):033:0> put 'mark','789','cgpa','9.5'
+0 row(s) in 0.0080 seconds
+
+READING DATA:
+
+hbase(main):034:0> scan 'student'
+ROW                       COLUMN+CELL                                                           
+ 123                      column=dept, timestamp=1679073745569, value=IT                 
+ 123                      column=name:, timestamp=1679073661684, value=abi                      
+ 456                      column=dept:, timestamp=1679073775205, value=CSE               
+ 456                      column=name:, timestamp=1679073689769, value=ragavi                   
+ 789                      column=dept:, timestamp=1679073800588, value=IT             
+ 789                      column=name:, timestamp=1679073713175, value=ravi                     
+3 row(s) in 0.0410 seconds
+
+hbase(main):035:0> scan 'staff'
+ROW                       COLUMN+CELL                                                           
+ 100                       column=name:, timestamp=1679073868703, value=anu                    
+ 100                      column=dept:, timestamp=1679073974248, value=IT                   
+ 100                      column=position:, timestamp=1679074148946, value=Professor                 
+ 100                      column=salary:, timestamp=1679074058173, value=50000                                        
+ 200                     column=name:, timestamp=1679073840211, value=ram                   
+ 200                      column=dept:, timestamp=1679073950668, value=CSE                   
+ 200                      column=position:, timestamp=1679074126982, value=Associate Professor              
+ 200                      column=salary:, timestamp=1679074023255, value=60000                                      
+ 300                      column=name:, timestamp=1679073899338, value=suba                    
+ 300                      column=dept:, timestamp=1679074000127, value=IT                   
+ 300                      column=position:, timestamp=1679074172904, value=HOD                 
+ 300                      column=salary:, timestamp=1679074087021, value=70000                                 
+3 row(s) in 0.0240 seconds
+
+hbase(main):036:0> scan 'mark'
+ROW                       COLUMN+CELL                                                           
+ 123                      column=name:, timestamp=1679074419142, value=abi               
+ 123                     column=m1:, timestamp=1679074348096, value=89                     
+ 123                      column=m2:, timestamp=1679074482663, value=92                   
+ 123                      column=cgpa:, timestamp=1679074552179, value=8.9                   
+ 456                      column=name:, timestamp=1679074441307, value=ragavi                   
+ 456                     column=m1:, timestamp=1679074371871, value=56                 
+ 456                      column=m2:, timestamp=1679074504070, value=65                
+ 456                     column=cgpa:, timestamp=1679074577991, value=7.5                    
+ 789                      column=name:, timestamp=1679074463951, value=ravi                
+ 789                      column=m1:, timestamp=1679074396042, value=98                   
+ 789                       column=m2:, timestamp=1679074523522, value=99                    
+ 789                       column=cgpa:, timestamp=1679074597289, value=9.5                    
+3 row(s) in 0.0490 seconds
+
+UPDATING DATA:
+
+hbase(main):037:0> put 'mark','123','cgpa','9.1'
+0 row(s) in 0.0080 seconds
+
+hbase(main):037:0> scan 'mark'
+ROW                       COLUMN+CELL                                                           
+  123                      column=name:, timestamp=1679074419142, value=abi               
+ 123                     column=m1:, timestamp=1679074348096, value=89                     
+ 123                      column=m2:, timestamp=1679074482663, value=92                   
+ 123                      column=cgpa:, timestamp=1679074552179, value=9.1                   
+ 456                      column=name:, timestamp=1679074441307, value=ragavi                   
+ 456                     column=m1:, timestamp=1679074371871, value=56                 
+ 456                      column=m2:, timestamp=1679074504070, value=65                
+ 456                     column=cgpa:, timestamp=1679074577991, value=7.5                    
+ 789                      column=name:, timestamp=1679074463951, value=ravi                
+ 789                      column=m1:, timestamp=1679074396042, value=98                   
+ 789                       column=m2:, timestamp=1679074523522, value=99                    
+ 789                       column=cgpa:, timestamp=1679074597289, value=9.5                 
+3 row(s) in 0.0190 seconds
+
+DELETING DATA:
+
+hbase(main):038:0> delete 'mark','123','cgpa'
+0 row(s) in 0.0330 seconds
+
+hbase(main):039:0> scan 'mark'
+ROW                       COLUMN+CELL                                                           
+  123                      column=name:, timestamp=1679074419142, value=abi               
+ 123                     column=m1:, timestamp=1679074348096, value=89                     
+ 123                      column=m2:, timestamp=1679074482663, value=92                   
+ 123                      column=cgpa:, timestamp=1679074552179, value=                  
+ 456                      column=name:, timestamp=1679074441307, value=ragavi                   
+ 456                     column=m1:, timestamp=1679074371871, value=56                 
+ 456                      column=m2:, timestamp=1679074504070, value=65                
+ 456                     column=cgpa:, timestamp=1679074577991, value=7.5                    
+ 789                      column=name:, timestamp=1679074463951, value=ravi                
+ 789                      column=m1:, timestamp=1679074396042, value=98                   
+ 789                       column=m2:, timestamp=1679074523522, value=99                    
+ 789                       column=cgpa:, timestamp=1679074597289, value=9.5                    
+3 row(s) in 0.0560 seconds
